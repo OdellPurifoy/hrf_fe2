@@ -33,7 +33,7 @@ const SideNavbar = () => {
           {sideNavbarListItems.map((text, index) => (
             <ListItem key={text.id} disablePadding>
               <ListItemButton>
-                <ListItemIcon>
+                <ListItemIcon sx={{ color: 'rgba(255, 255, 255,  0.7)'}}>
                   {text.icon}
                 </ListItemIcon>
                 <ListItemText primary={text.label} />
