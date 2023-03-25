@@ -9,9 +9,11 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { sideNavbarListItems } from './constants/sideNavbarListItems';
 import { sideNavbarStyles } from './styles';
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const SideNavbar = () => {
-  const drawerWidth = 240;
+  const navigate = useNavigate();
 
   return (
     <Drawer
@@ -23,7 +25,7 @@ const SideNavbar = () => {
         <Divider />
         <List>
           {sideNavbarListItems.map((item, index) => (
-            <ListItem button key={item.id} disablePadding>
+            <ListItem button key={item.id} onClick={() => navigate(item.route) }>
               <ListItemButton>
                 <ListItemIcon sx={sideNavbarStyles.icons}>
                   {item.icon}
