@@ -7,34 +7,30 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { sideNavbarListItems } from "./constants/sideNavbarListItems";
+import { sideNavbarListItems } from './constants/sideNavbarListItems';
+import { sideNavbarStyles } from './styles';
+import { useNavigate, useParams } from "react-router-dom";
+
 
 const SideNavbar = () => {
-  const drawerWidth = 240;
+  const navigate = useNavigate();
 
   return (
     <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-          },
-        }}
+        sx={sideNavbarStyles.drawer}
         variant="permanent"
         anchor="left"
       >
         <Toolbar />
         <Divider />
         <List>
-          {sideNavbarListItems.map((text, index) => (
-            <ListItem key={text.id} disablePadding>
+          {sideNavbarListItems.map((item, index) => (
+            <ListItem button key={item.id} onClick={() => navigate(item.route) }>
               <ListItemButton>
-                <ListItemIcon>
-                  {text.icon}
+                <ListItemIcon sx={sideNavbarStyles.icons}>
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text.label} />
+                <ListItemText sx={sideNavbarStyles.text} primary={item.label} />
               </ListItemButton>
             </ListItem>
           ))}
