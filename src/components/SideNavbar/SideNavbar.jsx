@@ -20,6 +20,8 @@ const SideNavbar = () => {
           '& .MuiDrawer-paper': {
             width: drawerWidth,
             boxSizing: 'border-box',
+            backgroundColor: '#101F33',
+            color: 'rgba(255, 255, 255,  0.7)',
           },
         }}
         variant="permanent"
