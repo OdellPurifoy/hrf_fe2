@@ -7,36 +7,28 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { sideNavbarListItems } from "./constants/sideNavbarListItems";
+import { sideNavbarListItems } from './constants/sideNavbarListItems';
+import { sideNavbarStyles } from './styles';
 
 const SideNavbar = () => {
   const drawerWidth = 240;
 
   return (
     <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-            boxSizing: 'border-box',
-            backgroundColor: '#101F33',
-            color: 'rgba(255, 255, 255,  0.7)',
-          },
-        }}
+        sx={sideNavbarStyles.drawer}
         variant="permanent"
         anchor="left"
       >
         <Toolbar />
         <Divider />
         <List>
-          {sideNavbarListItems.map((text, index) => (
-            <ListItem key={text.id} disablePadding>
+          {sideNavbarListItems.map((item, index) => (
+            <ListItem button key={item.id} disablePadding>
               <ListItemButton>
-                <ListItemIcon sx={{ color: 'rgba(255, 255, 255,  0.7)'}}>
-                  {text.icon}
+                <ListItemIcon sx={sideNavbarStyles.icons}>
+                  {item.icon}
                 </ListItemIcon>
-                <ListItemText primary={text.label} />
+                <ListItemText sx={sideNavbarStyles.text} primary={item.label} />
               </ListItemButton>
             </ListItem>
           ))}
